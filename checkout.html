@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Jota Trainer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="checkout-body">
+
+<div class="checkout-container">
+
+    <h1>🔥 Transforma tu cuerpo hoy</h1>
+    <p class="subtitle">Acceso inmediato al programa seleccionado</p>
+
+    <div class="precio-box">
+        <p class="antes">Antes: $49.000 COP</p>
+        <h2>HOY: $19.000 COP</h2>
+        <p class="urgencia">⚡ Oferta por tiempo limitado</p>
+    </div>
+
+    <ul class="beneficios">
+        <li>✅ Rutina guiada paso a paso</li>
+        <li>✅ Acceso inmediato</li>
+        <li>✅ Entrena desde casa</li>
+        <li>✅ Ideal para principiantes</li>
+    </ul>
+
+    <button id="btnPagar">💳 Pagar ahora</button>
+
+    <!-- 🔥 NUEVO -->
+    <p style="margin-top:10px;color:#22c55e;">
+        🔒 Pago seguro con acceso inmediato después de la compra
+    </p>
+
+</div>
+
+<script type="module">
+import { iniciarPagoWompi } from "./app.js";
+
+document.getElementById("btnPagar").addEventListener("click", () => {
+    iniciarPagoWompi();
+});
+</script>
+
+</body>
+</html>

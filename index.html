@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jota Trainer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 🎬 HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>TRANSFORMA TU CUERPO DESDE CASA</h1>
+        <p style="color:#22c55e; font-weight:bold;">
+            🔥 Más de 100 personas ya entrenan conmigo desde casa
+            </p>
+        <p>Entrena con Jota Trainer - Programas para principiantes</p>
+        <button onclick="document.querySelector('.premium').scrollIntoView({behavior:'smooth'})">
+            🚀 Empezar ahora
+        </button>
+    </div>
+</section>
+
+<!-- 🟢 GRATIS -->
+<section class="section">
+    <h2>🔥 Empieza Gratis</h2>
+
+    <div class="video-row">
+
+        <div class="card">
+            <video controls>
+                <source src="./videos/bienvenida_presentacion.mp4">
+            </video>
+            <p>Bienvenida</p>
+        </div>
+
+        <div class="card">
+            <video controls>
+                <source src="./videos/estiramiento_flexibilidad.mp4">
+            </video>
+            <p>Flexibilidad</p>
+        </div>
+
+        <div class="card">
+            <video controls>
+                <source src="./videos/tecnica_de_ejercicios.mp4">
+            </video>
+            <p>Técnica</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔒 PREMIUM -->
+<section class="section premium">
+    <h2>💎 Programas Premium</h2>
+
+    <div class="video-row">
+
+        <!-- MODULO 2 -->
+        <div class="card" data-modulo="modulo2">
+            <h3>Funcional 1</h3>
+            <button class="btn-comprar" onclick="comprar('modulo2')">💳 Comprar</button>
+            <button class="btn-ver" onclick="verRutina('modulo2_funcional.mp4','modulo2')" style="display:none;">▶️ Ver</button>
+        </div>
+
+        <!-- MODULO 3 -->
+        <div class="card" data-modulo="modulo3">
+            <h3>Funcional 2</h3>
+            <button class="btn-comprar" onclick="comprar('modulo3')">💳 Comprar</button>
+            <button class="btn-ver" onclick="verRutina('modulo3_funcional.mp4','modulo3')" style="display:none;">▶️ Ver</button>
+        </div>
+
+        <!-- MODULO 4 -->
+        <div class="card" data-modulo="modulo4">
+            <h3>GAP</h3>
+            <button class="btn-comprar" onclick="comprar('modulo4')">💳 Comprar</button>
+            <button class="btn-ver" onclick="verRutina('modulo4_GAP.mp4','modulo4')" style="display:none;">▶️ Ver</button>
+        </div>
+
+        <!-- MODULO 5 -->
+        <div class="card" data-modulo="modulo5">
+            <h3>HIIT</h3>
+            <button class="btn-comprar" onclick="comprar('modulo5')">💳 Comprar</button>
+            <button class="btn-ver" onclick="verRutina('modulo5_cardio_hiit.mp4','modulo5')" style="display:none;">▶️ Ver</button>
+        </div>
+
+        <!-- MODULO 6 -->
+        <div class="card" data-modulo="modulo6">
+            <h3>Piernas</h3>
+            <button class="btn-comprar" onclick="comprar('modulo6')">💳 Comprar</button>
+            <button class="btn-ver" onclick="verRutina('modulo6_piernas_gluteos.mp4','modulo6')" style="display:none;">▶️ Ver</button>
+        </div>
+
+        <!-- MODULO 7 -->
+        <div class="card" data-modulo="modulo7">
+            <h3>Pecho/Espalda</h3>
+            <button class="btn-comprar" onclick="comprar('modulo7')">💳 Comprar</button>
+            <button class="btn-ver" onclick="verRutina('modulo7_pecho_espalda.mp4','modulo7')" style="display:none;">▶️ Ver</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- CHAT -->
+<!-- 💬 BOTÓN CHAT -->
+<div id="chatToggle">💬</div>
+<!-- 💬 CHAT -->
+<div id="chatContainer" class="chat-hidden">
+    <div id="chatMessages"></div>
+    <div class="chat-input">
+        <input id="mensajeUsuario" placeholder="¿Qué quieres lograr?">
+        <button id="enviarBtn">Enviar</button>
+    </div>
+</div>
+
+<script type="module" src="./script.js"></script>
+</body>
+</html>
