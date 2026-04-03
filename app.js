@@ -28,5 +28,5 @@ export function activarAcceso(modulo) {
 
 // 💳 PAGO WOMPI (CORREGIDO)
 export function iniciarPagoWompi() {
-    window.location.href = "https://checkout.wompi.co/l/test_1M4Cr7?_gl=1*4luuae*_gcl_aw*R0NMLjE3NzQyNDM2NjcuQ2owS0NRandwdjdOQmhDekFSSXNBRGtJZld5SENEYk5DWG43NHhhUjJrWHZ3X2V3dk1VRGVva1pTWEJqdUVIVXltVjlBYmtZdWU4eThHVWFBajZ1RUFMd193Y0I.*_gcl_au*MzU5MjYwNjE0LjE3NzQ3NTQyNjA."
+    window.location.href = "https://checkout.wompi.co/l/test_Jjky1h  link"
 }
