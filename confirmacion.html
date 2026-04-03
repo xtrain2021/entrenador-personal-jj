@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Confirmación de pago</title>
+</head>
+
+<body>
+
+<h1>⏳ Verificando tu pago...</h1>
+
+<script>
+async function verificarPago() {
+    const params = new URLSearchParams(window.location.search);
+    const transactionId = params.get("id");
+
+    if (!transactionId) {
+        document.body.innerHTML = "❌ No se encontró la transacción";
+        return;
+    }
+
+    try {
+        const res = await fetch("https://TU-BACKEND.onrender.com/verificar-pago?id=" + transactionId);
+        const data = await res.json();
+
+        if (data.status === "APPROVED") {
+            localStorage.setItem("acceso_modulo", "true");
+            document.body.innerHTML = "✅ Pago aprobado. Redirigiendo...";
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 2000);
+        } else {
+            document.body.innerHTML = "❌ Pago no aprobado";
+        }
+
+    } catch (error) {
+        document.body.innerHTML = "❌ Error verificando el pago";
+    }
+}
+
+verificarPago();
+</script>
+
+</body>
+</html>
