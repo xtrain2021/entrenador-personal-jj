@@ -28,5 +28,5 @@ export function activarAcceso(modulo) {
 
 // 💳 PAGO WOMPI (CORREGIDO)
 export function iniciarPagoWompi() {
-    window.location.href = "https://checkout.wompi.co/l/test_Jjky1h  link"
+    window.location.href = "https://checkout.wompi.co/l/test_Jjky1h"
 }

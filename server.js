@@ -1,34 +1,50 @@
-const express = require("express");
+import express from "express";
+import fetch from "node-fetch";
+import cors from "cors";
+
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-// 🔐 WEBHOOK WOMPI
-app.post("/wompi-webhook", (req, res) => {
-    const event = req.body;
+// 🔐 LLAVE PRIVADA DESDE RENDER
+const WOMPI_PRIVATE_KEY = process.env.WOMPI_PRIVATE_KEY;
 
-    console.log("Evento recibido:", event);
+// 🔍 VERIFICAR PAGO REAL
+app.get("/verificar-pago", async (req, res) => {
 
-    if (event.event === "transaction.updated") {
+```
+const transactionId = req.query.id;
 
-        const transaction = event.data.transaction;
+if (!transactionId) {
+    return res.status(400).json({ error: "Falta ID" });
+}
 
-        if (transaction.status === "APPROVED") {
-            console.log("✅ Pago aprobado:", transaction.id);
+try {
+    const response = await fetch(
+        `https://sandbox.wompi.co/v1/transactions/${transactionId}`,
+        {
+            headers: {
+                Authorization: `Bearer ${WOMPI_PRIVATE_KEY}`
+            }
         }
-    }
+    );
 
-    res.sendStatus(200);
+    const data = await response.json();
+
+    res.json({
+        status: data.data.status
+    });
+
+} catch (error) {
+    res.status(500).json({ error: "Error verificando pago" });
+}
+```
+
 });
 
-// 🔍 VERIFICAR PAGO
-app.get("/verificar", (req, res) => {
-    res.json({ aprobado: true });
-});
-
-// 🚀 IMPORTANTE PARA RENDER
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
-    console.log("Servidor corriendo en puerto", PORT);
+console.log("Servidor corriendo en puerto", PORT);
 });

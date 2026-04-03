@@ -21,7 +21,7 @@ async function verificarPago() {
     }
 
     try {
-        const res = await fetch("https://TU-BACKEND.onrender.com/verificar-pago?id=" + transactionId);
+        const res = await fetch("https://backend-jota.onrender.com/verificar-pago?id=" + transactionId);
         const data = await res.json();
 
         if (data.status === "APPROVED") {
