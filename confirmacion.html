@@ -15,8 +15,10 @@ async function verificarPago() {
     const params = new URLSearchParams(window.location.search);
     const transactionId = params.get("id");
 
-    if (!transactionId) {
-        document.body.innerHTML = "❌ No se encontró la transacción";
+    const modulo = localStorage.getItem("moduloPendiente");
+
+    if (!transactionId || !modulo) {
+        document.body.innerHTML = "❌ Error en la validación";
         return;
     }
 
@@ -25,11 +27,16 @@ async function verificarPago() {
         const data = await res.json();
 
         if (data.status === "APPROVED") {
-            localStorage.setItem("acceso_modulo", "true");
-            document.body.innerHTML = "✅ Pago aprobado. Redirigiendo...";
+
+            // 🔓 desbloqueo correcto por módulo
+            localStorage.setItem("acceso_" + modulo, "true");
+
+            document.body.innerHTML = "✅ Pago aprobado. Abriendo tu rutina...";
+
             setTimeout(() => {
-                window.location.href = "index.html";
+                window.location.href = "player.html?modulo=" + modulo;
             }, 2000);
+
         } else {
             document.body.innerHTML = "❌ Pago no aprobado";
         }
