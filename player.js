@@ -28,26 +28,52 @@ const videos = {
     }
 };
 
-// 🔍 OBTENER PARÁMETRO
+// 🔍 PARAMETROS
 const params = new URLSearchParams(window.location.search);
 const modulo = params.get("modulo");
 
 const videoPlayer = document.getElementById("videoPlayer");
 const titulo = document.getElementById("tituloVideo");
 
-// 🔒 VALIDAR ACCESO
-if (!modulo || localStorage.getItem("acceso_" + modulo) !== "true") {
-    alert("🔒 No tienes acceso a esta rutina");
-    window.location.href = "index.html";
-} else {
+// 🔐 DOBLE VALIDACIÓN (nivel pro)
+function validarAcceso() {
 
+    if (!modulo) {
+        bloquear();
+        return;
+    }
+
+    const acceso = localStorage.getItem("acceso_" + modulo);
+
+    if (acceso !== "true") {
+        bloquear();
+        return;
+    }
+
+    // 🔥 SI TODO OK → cargar video
     const data = videos[modulo];
 
     if (data) {
         titulo.innerText = data.nombre;
         videoPlayer.src = VIDEO_PATH + data.archivo;
+    } else {
+        bloquear();
     }
 }
+
+// 🚫 BLOQUEO
+function bloquear() {
+    alert("🔒 Acceso restringido");
+    window.location.href = "index.html";
+}
+
+// 🚨 PROTECCIÓN EXTRA (evita manipulación básica)
+window.addEventListener("storage", () => {
+    validarAcceso();
+});
+
+// 🚀 INICIO
+validarAcceso();
 
 // 🔙 VOLVER
 window.volver = function () {
