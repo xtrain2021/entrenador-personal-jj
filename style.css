@@ -1,141 +1,36 @@
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #020617;
-    color: white;
-}
-
-/* 🎬 HERO */
-.hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(2,6,23,1)),
-                url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e');
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    padding: 40px;
-}
-
-.hero-content {
-    max-width: 500px;
-}
-
-.hero h1 {
-    font-size: 40px;
-}
-
-.hero button {
-    padding: 15px;
-    background: #22c55e;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* SECCIONES */
-.section {
-    padding: 20px;
-}
-
-/* FILA SCROLL */
-.video-row {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-}
-
-/* CARDS */
+/* 🔥 EFECTO PREMIUM */
 .card {
-    min-width: 220px;
-    background: #1e293b;
-    padding: 15px;
-    border-radius: 15px;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-/* VIDEO */
-video {
-    width: 100%;
-    border-radius: 10px;
-}
-
-/* BOTONES */
-button {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-/* BOTÓN FLOTANTE */
-#chatToggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #22c55e;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1000;
-}
-/* CHAT OCULTO */
-.chat-hidden {
-    display: none;
-}
-/* CHAT */
-#chatContainer {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 300px;
-    background: #0f172a;
-    border-radius: 15px;
+    position: relative;
     overflow: hidden;
-    z-index: 1000;
 }
 
-#chatMessages {
-    height: 200px;
-    overflow-y: auto;
-    padding: 10px;
-}
-
-.chat-input {
-    display: flex;
-}
-
-.chat-input input {
-    flex: 1;
-    padding: 10px;
-    background: #1e293b;
-    color: white;
-    border: none;
-}
-
-.chat-input button {
+.card::after {
+    content: "🔒 PREMIUM";
+    position: absolute;
+    top: 10px;
+    left: -40px;
     background: #22c55e;
-}
-/* ===============================
-🎬 PLAYER (AGREGAR AQUÍ)
-=============================== */
-.player-container {
-    padding: 20px;
-    text-align: center;
+    color: black;
+    padding: 5px 50px;
+    transform: rotate(-45deg);
+    font-size: 10px;
 }
 
-#videoPlayer {
-    width: 90%;
-    max-width: 900px;
-    border-radius: 15px;
-    margin-top: 20px;
+/* 🎬 BOTÓN VER */
+.btn-ver {
+    background: #22c55e;
+    color: black;
+    font-weight: bold;
+}
+
+/* 💳 BOTÓN COMPRAR */
+.btn-comprar {
+    background: #3b82f6;
+    color: white;
+}
+
+/* 🎯 HOVER MÁS PRO */
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
