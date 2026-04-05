@@ -1,129 +1,532 @@
-/* RESET */
-* {
+/* ========================================
+   JOTA TRAINER - Stylesheet
+   Estilo: Netflix-inspired dark theme
+   ======================================== */
+
+/* ----------------------------------------
+   1. CUSTOM PROPERTIES (Variables CSS)
+   ---------------------------------------- */
+:root {
+    /* Colores principales */
+    --color-bg:          #0a0a0a;
+    --color-bg-elevated: #141414;
+    --color-bg-card:     #1a1a1a;
+    --color-bg-header:   #000000;
+
+    /* Texto */
+    --color-text:        #ffffff;
+    --color-text-muted:  #a3a3a3;
+    --color-text-subtle: #737373;
+
+    /* Acentos */
+    --color-primary:     #e50914;   /* Rojo Netflix */
+    --color-success:     #22c55e;
+    --color-info:        #3b82f6;
+    --color-danger:      #ef4444;
+
+    /* Tipografía */
+    --font-family:       'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs:      0.75rem;
+    --font-size-sm:      0.875rem;
+    --font-size-base:    1rem;
+    --font-size-lg:      1.25rem;
+    --font-size-xl:      1.5rem;
+    --font-size-2xl:     2rem;
+    --font-size-3xl:     2.5rem;
+
+    /* Espaciado */
+    --spacing-xs:        0.25rem;
+    --spacing-sm:        0.5rem;
+    --spacing-md:        1rem;
+    --spacing-lg:        1.5rem;
+    --spacing-xl:        2rem;
+    --spacing-2xl:       3rem;
+
+    /* Bordes */
+    --radius-sm:         8px;
+    --radius-md:         12px;
+    --radius-lg:         16px;
+    --radius-xl:         20px;
+
+    /* Transiciones */
+    --transition-fast:   0.2s ease;
+    --transition-base:   0.3s ease;
+
+    /* Sombras */
+    --shadow-card:       0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ----------------------------------------
+   2. RESET & BASE
+   ---------------------------------------- */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #0f172a;
-    color: #fff;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    background: var(--color-bg);
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* HEADER */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ----------------------------------------
+   3. LAYOUT - Header
+   ---------------------------------------- */
 header {
-    padding: 20px;
+    padding: var(--spacing-lg) var(--spacing-xl);
     text-align: center;
-    background: #020617;
-    font-size: 24px;
-    font-weight: bold;
+    background: var(--color-bg-header);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--color-primary);
 }
 
-/* CONTENEDOR */
-.container {
+/* ----------------------------------------
+   4. LAYOUT - Hero
+   ---------------------------------------- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        var(--color-bg-header) 0%,
+        var(--color-bg) 100%
+    );
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-content button {
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--color-primary);
+    color: var(--color-text);
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.5px;
+}
+
+/* ----------------------------------------
+   5. LAYOUT - Sections
+   ---------------------------------------- */
+.section {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+.section h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+/* ----------------------------------------
+   6. LAYOUT - Grid (Container & Video Row)
+   ---------------------------------------- */
+.container,
+.video-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
 }
 
-/* CARD */
+/* ----------------------------------------
+   7. COMPONENTS - Card
+   ---------------------------------------- */
 .card {
-    background: #1e293b;
-    border-radius: 20px;
-    padding: 20px;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
     text-align: center;
-    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    transition: transform var(--transition-base),
+                box-shadow var(--transition-base);
+    box-shadow: var(--shadow-card);
 }
 
 .card img {
     width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.card video {
+    width: 100%;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .card h3 {
-    margin-bottom: 10px;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
 }
 
-/* 🔥 EFECTO PREMIUM */
+.card p {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Badge Premium */
 .card::after {
-    content: "🔒 PREMIUM";
+    content: "\1F512  PREMIUM";
     position: absolute;
-    top: 10px;
-    left: -40px;
-    background: #22c55e;
-    color: black;
-    padding: 5px 50px;
+    top: 14px;
+    left: -42px;
+    background: var(--color-primary);
+    color: var(--color-text);
+    padding: 4px 50px;
     transform: rotate(-45deg);
-    font-size: 10px;
-    font-weight: bold;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-/* BOTONES */
+/* Ocultar badge en cards de sección gratuita */
+.section:not(.premium) .card::after {
+    display: none;
+}
+
+/* ----------------------------------------
+   8. COMPONENTS - Buttons (Base)
+   ---------------------------------------- */
 button {
+    display: inline-block;
     border: none;
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-}
-
-/* 🎬 BOTÓN VER */
-.btn-ver {
-    background: #22c55e;
-    color: black;
-    font-weight: bold;
-}
-
-/* 💳 BOTÓN COMPRAR */
-.btn-comprar {
-    background: #3b82f6;
-    color: white;
+    margin-top: var(--spacing-sm);
+    transition: opacity var(--transition-fast),
+                transform var(--transition-fast);
 }
 
 button:hover {
-    opacity: 0.8;
+    opacity: 0.85;
+    transform: translateY(-1px);
 }
 
-/* 🎯 HOVER MÁS PRO */
-.card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+button:active {
+    transform: translateY(0);
 }
 
-/* PLAYER */
+/* Button Variants */
+.btn-ver {
+    background: var(--color-success);
+    color: #000;
+    font-weight: 700;
+}
+
+.btn-comprar {
+    background: var(--color-primary);
+    color: var(--color-text);
+}
+
+.volver {
+    background: var(--color-danger);
+    color: var(--color-text);
+}
+
+/* ----------------------------------------
+   9. COMPONENTS - Player
+   ---------------------------------------- */
 .player-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-xl);
+}
+
+.player-container h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 video {
     width: 90%;
     max-width: 800px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--spacing-xl);
+    background: #000;
 }
 
-/* BOTÓN VOLVER */
-.volver {
-    background: #ef4444;
-    color: white;
+/* ----------------------------------------
+   10. COMPONENTS - Checkout
+   ---------------------------------------- */
+.checkout-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        var(--color-bg) 0%,
+        var(--color-bg-elevated) 100%
+    );
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    header {
-        font-size: 18px;
+.checkout-container {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: var(--shadow-card-hover);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.checkout-container h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+}
+
+.checkout-container .subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xl);
+}
+
+.precio-box {
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.precio-box .antes {
+    color: var(--color-text-subtle);
+    text-decoration: line-through;
+    font-size: var(--font-size-sm);
+}
+
+.precio-box h2 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-success);
+    margin: var(--spacing-xs) 0;
+}
+
+.precio-box .urgencia {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.beneficios {
+    list-style: none;
+    text-align: left;
+    margin-bottom: var(--spacing-xl);
+}
+
+.beneficios li {
+    padding: var(--spacing-sm) 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.beneficios li:last-child {
+    border-bottom: none;
+}
+
+.checkout-container #btnPagar {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    background: var(--color-primary);
+    color: var(--color-text);
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+}
+
+/* ----------------------------------------
+   11. COMPONENTS - Chat
+   ---------------------------------------- */
+#chatToggle {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-xl);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(229, 9, 20, 0.4);
+    transition: transform var(--transition-fast);
+    z-index: 1000;
+}
+
+#chatToggle:hover {
+    transform: scale(1.1);
+}
+
+#chatContainer {
+    position: fixed;
+    bottom: 100px;
+    right: var(--spacing-xl);
+    width: 340px;
+    max-height: 420px;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: var(--shadow-card-hover);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 1000;
+    transition: opacity var(--transition-base),
+                transform var(--transition-base);
+}
+
+#chatContainer.chat-hidden {
+    display: none;
+}
+
+#chatMessages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    background: var(--color-bg-elevated);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    outline: none;
+}
+
+.chat-input input::placeholder {
+    color: var(--color-text-subtle);
+}
+
+.chat-input button {
+    margin: 0;
+    border-radius: 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-primary);
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+/* ----------------------------------------
+   12. RESPONSIVE
+   ---------------------------------------- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 50vh;
+        padding: var(--spacing-xl) var(--spacing-md);
     }
 
-    .container {
+    .hero-content h1 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-content p {
+        font-size: var(--font-size-base);
+    }
+
+    header {
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md);
+    }
+
+    .container,
+    .video-row {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .section h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .checkout-container {
+        padding: var(--spacing-xl);
+    }
+
+    #chatContainer {
+        width: calc(100% - var(--spacing-xl) * 2);
+        right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    .card {
+        padding: var(--spacing-md);
     }
 }
