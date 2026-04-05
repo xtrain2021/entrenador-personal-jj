@@ -9,4 +9,4 @@ export const WOMPI_CONFIG = {
     redirectUrl: "https://entrenador-personal-jj.netlify.app/index.html?paid=true"
 };
 
-export const VIDEO_PATH = "./videos/";
+export const VIDEO_PATH = "https://res.cloudinary.com/TU_USUARIO/video/upload/";
